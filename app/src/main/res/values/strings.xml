@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AuthHelp</string>
+
+    <!-- Стринги для начальной страницы -->
+    <string name="welcome">
+        Приветствуем вас\n
+        в\n
+        MemTime!
+
+    </string>
+</resources>
