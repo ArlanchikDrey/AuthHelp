@@ -23,7 +23,19 @@ public class MainFragment extends Fragment {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                return false;
+                switch (menuItem.getItemId()){
+                    case R.id.posts:
+                        getActivity().getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.container2, FragmentPost.newInstance())
+                                .commit();
+                        return true;
+                    case R.id.profile:
+                        getActivity().getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.container2, FragmentProfile.newInstance())
+                                .commit();
+                        return true;
+                }
+                return true
             }
         });
 
