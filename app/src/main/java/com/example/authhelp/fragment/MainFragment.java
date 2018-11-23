@@ -23,10 +23,10 @@ public class MainFragment extends Fragment {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
+                switch (menuItem.getItemId()) {
                     case R.id.posts:
                         getActivity().getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.container2, FragmentPost.newInstance())
+                                .replace(R.id.container2, FragmentState.newInstance())
                                 .commit();
                         return true;
                     case R.id.profile:
@@ -35,7 +35,7 @@ public class MainFragment extends Fragment {
                                 .commit();
                         return true;
                 }
-                return true
+                return true;
             }
         });
 
@@ -46,4 +46,5 @@ public class MainFragment extends Fragment {
         MainFragment fragment = new MainFragment();
         return fragment;
 
-    }}
+    }
+}
