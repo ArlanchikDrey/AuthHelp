@@ -46,12 +46,8 @@ public class FragmentState extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-<<<<<<< HEAD
         recyclerView = (RecyclerView) inflater.inflate(R.layout.fragment_state, container, false);
-=======
 
-        RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.fragment_state, container, false);
->>>>>>> dae26ba4f0b9f86f487326e6c20b92982c8d7417
         arrayList = new ArrayList<>();
 
 
@@ -62,7 +58,7 @@ public class FragmentState extends Fragment {
             }
         };
 
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(arrayList, item);
+        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(arrayList);
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 

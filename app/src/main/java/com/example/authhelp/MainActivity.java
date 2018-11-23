@@ -6,7 +6,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
 import com.example.authhelp.fragment.DialogFragment;
+import com.example.authhelp.fragment.LoginFragment;
 import com.example.authhelp.fragment.MainFragment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -15,8 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.toolbar2);
-        setSupportActionBar(toolbar);
-<<<<<<< HEAD
+
 
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -31,16 +33,6 @@ public class MainActivity extends AppCompatActivity {
 //                    .commit();
         }
 
-
-
-
-
-
-=======
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, MainFragment.newInstance())
-                .commit();
-    }
->>>>>>> dae26ba4f0b9f86f487326e6c20b92982c8d7417
 
 
     @Override
