@@ -12,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.authhelp.Item;
 import com.example.authhelp.ItemsForCardView;
+import com.example.authhelp.MainActivity;
 import com.example.authhelp.R;
 import com.example.authhelp.recyclerView.RecyclerViewAdapter;
 
@@ -24,6 +26,7 @@ public class FragmentState extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.fragment_state, container, false);
         arrayList = new ArrayList<>();
 
@@ -31,7 +34,14 @@ public class FragmentState extends Fragment {
         , "buy material: 23", "value for one element", "itigo");
         arrayList.add(itemsForCardView);
 
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(arrayList);
+        Item item = new Item() {
+            @Override
+            public void onItemClick() {
+                ((MainActivity)getActivity()).showDialog();
+            }
+        };
+
+        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(arrayList, item);
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
