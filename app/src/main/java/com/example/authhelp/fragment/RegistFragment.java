@@ -31,18 +31,20 @@ public class RegistFragment extends Fragment {
     private EditText editText;
     private Button button;
     private FirebaseUser user;
-    private DatabaseReference mDatabase= FirebaseDatabase.getInstance().getReference(); //Ссылка на БД
+    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference(); //Ссылка на БД
     private FirebaseAuth auth;
+
+    private String key_company;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_regist,container,false);
-        spinner=view.findViewById(R.id.spinner_who);
-        editText=view.findViewById(R.id.name_company_regist);
-        button=view.findViewById(R.id.regist_next);
+        View view = inflater.inflate(R.layout.fragment_regist, container, false);
+        spinner = view.findViewById(R.id.spinner_who);
+        editText = view.findViewById(R.id.name_company_regist);
+        button = view.findViewById(R.id.regist_next);
 
-        auth=FirebaseAuth.getInstance();
-        user=auth.getCurrentUser();
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,18 +54,21 @@ public class RegistFragment extends Fragment {
                 if(selected.equals("Владелец")){
                     String who=editText.getText().toString();// название фирмы
                     mDatabase.child("Company").child(who).child("Владелец").setValue(user.getUid());
+                    mDatabase.child("Users").child(user.getUid()).child("company").setValue(who);
                 }else if(selected.equals("Сотрудник")){
                     final String who2=editText.getText().toString();// название фирмы
+                    mDatabase.child("Users").child(user.getUid()).child("company").setValue(who2);
                     mDatabase.child("Company").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                         if(dataSnapshot.hasChild(who2)){
-                             mDatabase.child("Company").child(who2).child("Сотрудники")
-                                     .child(user.getUid()).setValue(user.getDisplayName());
-                         }else{
-                             Toast.makeText(getContext(), "Нет", Toast.LENGTH_SHORT).show();
-                         }
+                            if(dataSnapshot.hasChild(who2)){
+                                mDatabase.child("Company").child(who2).child("Сотрудники")
+                                        .child(user.getUid()).setValue(user.getDisplayName());
+                            }else{
+                                Toast.makeText(getContext(), "Нет", Toast.LENGTH_SHORT).show();
+                            }
                         }
+
 
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
@@ -83,9 +88,8 @@ public class RegistFragment extends Fragment {
     }
 
 
-
-    public static Fragment newInstance(){
-        RegistFragment fragment=new RegistFragment();
-        return  fragment;
+    public static Fragment newInstance() {
+        RegistFragment fragment = new RegistFragment();
+        return fragment;
     }
 }

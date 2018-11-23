@@ -90,32 +90,6 @@ public class LoginFragment extends Fragment {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) { // Успешный вход, обновление пользовательского
                             //проверка на наличие данных о пользователе в базе
-                            user=mAuth.getCurrentUser();
-                            final  String user_id= mAuth.getCurrentUser().getUid();
-                            databaseReference= FirebaseDatabase.getInstance().getReference("Users");
-                            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    if(dataSnapshot.hasChild(user_id)){
-
-                                    }else{
-                                        String name_google=user.getDisplayName();
-                                        Uri ava=user.getPhotoUrl();
-                                        Map<String,String> usermap =new HashMap<>();
-                                        usermap.put("Avatar", ava.toString());
-                                        usermap.put("name", name_google);
-                                        usermap.put("family", "");
-                                        databaseReference.child(user_id).setValue(usermap);
-
-                                    }
-
-                                }
-
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {
-
-                                }
-                            });
 
                             //переходим в главный экран
                             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, RegistFragment.newInstance())
