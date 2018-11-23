@@ -26,6 +26,11 @@ public class FragmentState extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.fragment_state, container, false);
         arrayList = new ArrayList<>();
+
+        ItemsForCardView itemsForCardView = new ItemsForCardView("today"
+        , "buy material: 23", "value for one element", "itigo");
+        arrayList.add(itemsForCardView);
+
         RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(arrayList);
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -34,12 +39,12 @@ public class FragmentState extends Fragment {
         return recyclerView;
     }
 
-    public static FragmentState newInstance(String state) {
+    public static FragmentState newInstance() {
 
-        Bundle args = new Bundle();
-        args.putString("key", state);
+        //Bundle args = new Bundle();
+        //args.putString("key", state);
         FragmentState fragment = new FragmentState();
-        fragment.setArguments(args);
+       // fragment.setArguments(args);
         return fragment;
     }
 }

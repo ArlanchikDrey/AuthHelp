@@ -5,6 +5,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.authhelp.ItemsForCardView;
 import com.example.authhelp.R;
@@ -27,12 +28,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-
+        CardView cardView = viewHolder.cardView;
+        TextView textView = cardView.findViewById(R.id.textView2);
+        TextView textView2 = cardView.findViewById(R.id.textView3);
+        TextView textView3 = cardView.findViewById(R.id.textView4);
+        TextView textView4 = cardView.findViewById(R.id.textView5);
+        textView.setText(arrayList.get(i).getDay());
+        textView2.setText(arrayList.get(i).getFirstItem());
+        textView3.setText(arrayList.get(i).getSecondItem());
+        textView4.setText(arrayList.get(i).getThirdItem());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return arrayList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
