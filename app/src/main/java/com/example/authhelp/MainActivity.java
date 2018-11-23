@@ -24,16 +24,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        if(currentUser==null){
-            Intent intent = new Intent(MainActivity.this, StartActivity.class);
-            startActivity(intent);
-
-        }else{
-            Intent intent = new Intent(MainActivity.this, OsnovnoeActivity.class);
-            startActivity(intent);
-            finish();
-        }
+//        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+//        if(currentUser==null){
+//            Intent intent = new Intent(MainActivity.this, StartActivity.class);
+//            startActivity(intent);
+//
+//        }else{
+//            Intent intent = new Intent(MainActivity.this, OsnovnoeActivity.class);
+//            startActivity(intent);
+//            finish();
+//        }
     }
 
 
