@@ -37,9 +37,9 @@ public class RegistFragment extends Fragment {
             public void onClick(View v) {
                 String selected = spinner.getSelectedItem().toString(); //кем является
                 String who=editText.getText().toString();// название фирмы
-
-
-
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, MainFragment.newInstance())
+                        .commit();
             }
         });
 
