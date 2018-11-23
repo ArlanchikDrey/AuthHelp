@@ -51,6 +51,10 @@ public class RegistFragment extends Fragment {
                 String who=editText.getText().toString();// название фирмы
                 String comment_key = mDatabase.child("Company").push().getKey();
                 
+
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, MainFragment.newInstance())
+                        .commit();
             }
         });
 

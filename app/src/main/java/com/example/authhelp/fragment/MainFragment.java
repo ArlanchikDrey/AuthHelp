@@ -29,7 +29,7 @@ public class MainFragment extends Fragment {
     }
 
     public static Fragment newInstance() {
-        MainFragment fragment=new MainFragment();
+        MainFragment fragment = new MainFragment();
         return fragment;
-    }
-}
+
+    }}
