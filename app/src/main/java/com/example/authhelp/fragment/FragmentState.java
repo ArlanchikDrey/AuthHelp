@@ -42,6 +42,7 @@ public class FragmentState extends Fragment {
 
 
     private String company_name;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -54,7 +55,7 @@ public class FragmentState extends Fragment {
         Item item = new Item() {
             @Override
             public void onItemClick() {
-                ((MainActivity)getActivity()).showDialog();
+                ((MainActivity) getActivity()).showDialog();
             }
         };
 
@@ -66,23 +67,25 @@ public class FragmentState extends Fragment {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        company_name=dataSnapshot.getValue(String.class);
+                        company_name = dataSnapshot.getValue(String.class);
                         mDatabase.child("Company").child(company_name).child("Post").addValueEventListener(new ValueEventListener() {
                             ListPost postkiki;
+
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
-                                arrayList.clear();
-                                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                                    postkiki= postSnapshot.getValue(ListPost.class);
+                               // arrayList.clear();
+                                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                                    postkiki = postSnapshot.getValue(ListPost.class);
                                     arrayList.add(postkiki);
 
                                 }
 
                                 recyclerView.getAdapter().notifyDataSetChanged();
-                                recyclerView.scrollToPosition(arrayList.size()-1);
+                                //recyclerView.scrollToPosition(arrayList.size() - 1);
 
 
                             }
+
                             @Override
                             public void onCancelled(DatabaseError databaseError) {
                             }
@@ -96,11 +99,8 @@ public class FragmentState extends Fragment {
                 });
 
 
-
-
         return recyclerView;
     }
-
 
 
     public static FragmentState newInstance() {
@@ -108,7 +108,7 @@ public class FragmentState extends Fragment {
         //Bundle args = new Bundle();
         //args.putString("key", state);
         FragmentState fragment = new FragmentState();
-       // fragment.setArguments(args);
+        // fragment.setArguments(args);
         return fragment;
     }
 }
