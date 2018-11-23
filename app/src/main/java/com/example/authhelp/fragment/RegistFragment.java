@@ -18,12 +18,21 @@ import com.example.authhelp.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class RegistFragment extends Fragment {
 
-    Spinner spinner;
-    EditText editText;
-    Button button;
+    private Spinner spinner;
+    private EditText editText;
+    private Button button;
+    private FirebaseUser user;
+    private DatabaseReference mDatabase= FirebaseDatabase.getInstance().getReference(); //Ссылка на БД
+    private FirebaseAuth auth;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -32,14 +41,16 @@ public class RegistFragment extends Fragment {
         editText=view.findViewById(R.id.name_company_regist);
         button=view.findViewById(R.id.regist_next);
 
+        auth=FirebaseAuth.getInstance();
+        user=auth.getCurrentUser();
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String selected = spinner.getSelectedItem().toString(); //кем является
                 String who=editText.getText().toString();// название фирмы
-
-
-
+                String comment_key = mDatabase.child("Company").push().getKey();
+                
             }
         });
 

@@ -27,4 +27,9 @@ public class MainFragment extends Fragment {
         });
         return constraintLayout;
     }
+
+    public static Fragment newInstance() {
+        MainFragment fragment=new MainFragment();
+        return fragment;
+    }
 }
