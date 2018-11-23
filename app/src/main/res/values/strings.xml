@@ -15,6 +15,13 @@
         <item>Владелец</item>
         <item>Сотрудник</item>
     </string-array>
+
+    <string-array name="whatYouWant">
+        <item>Выбери</item>
+        <item>Покупка</item>
+        <item>Продано</item>
+        <item>Отчет за день</item>
+    </string-array>
     <string name="name_company">Введите название фирмы</string>
     <string name="next">Продолжить</string>
 

@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -12,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.authhelp.MainActivity;
 import com.example.authhelp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,29 +37,28 @@ public class FragmentProfile extends Fragment {
 
     private EditText finish_price,price_once,number_material,buy_sell;
     private Button button;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-       View view=inflater.inflate(R.layout.fragment_profile,container,false);
 
+<<<<<<< HEAD
        button=view.findViewById(R.id.button3);
        finish_price=view.findViewById(R.id.finish_price);
        price_once=view.findViewById(R.id.price_once);
        number_material=view.findViewById(R.id.number_material);
        buy_sell=view.findViewById(R.id.buy_sell);
+=======
+>>>>>>> dae26ba4f0b9f86f487326e6c20b92982c8d7417
+
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        button = view.findViewById(R.id.button3);
+        money = view.findViewById(R.id.editText3);
 
 
-       mDatabase.child("Users").child(user.getUid()).child("company")
-               .addValueEventListener(new ValueEventListener() {
-           @Override
-           public void onDataChange(DataSnapshot dataSnapshot) {
-              company_name=dataSnapshot.getValue(String.class);
-              }
-
-           @Override
-           public void onCancelled(DatabaseError databaseError) {
-
+<<<<<<< HEAD
            }
        });
 
@@ -65,13 +67,31 @@ public class FragmentProfile extends Fragment {
            @Override
            public void onClick(View v) {
                String key= mDatabase.child("Company").child(company_name).child("Post").push().getKey();
+=======
+//       mDatabase.child("Users").child(user.getUid()).child("company")
+//               .addValueEventListener(new ValueEventListener() {
+//           @Override
+//           public void onDataChange(DataSnapshot dataSnapshot) {
+//              company_name=dataSnapshot.getValue(String.class);
+//              }
+//
+//           @Override
+//           public void onCancelled(DatabaseError databaseError) {
+//
+//           }
+//       });
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String key = mDatabase.child("Company").child(company_name).child("Post").push().getKey();
+>>>>>>> dae26ba4f0b9f86f487326e6c20b92982c8d7417
 
 
-               Calendar calendar=Calendar.getInstance();
-               SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd-MM HH:mm:ss");
-               String date_time=simpleDateFormat.format(calendar.getTime());
-               mDatabase.child("Company").child(company_name).child("Post").child(key).child("day")
-                       .setValue(date_time);
+                Calendar calendar = Calendar.getInstance();
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM HH:mm:ss");
+                String date_time = simpleDateFormat.format(calendar.getTime());
+                mDatabase.child("Company").child(company_name).child("Post").child(key).child("day")
+                        .setValue(date_time);
 
                mDatabase.child("Company").child(company_name).child("Post").child(key).child("buyORsell")
                        .setValue(buy_sell.getText().toString());
@@ -88,8 +108,15 @@ public class FragmentProfile extends Fragment {
                        .setValue(String.valueOf(sum));
 
 
+<<<<<<< HEAD
            }
        });
+=======
+                mDatabase.child("Company").child(company_name).child("Post").child(key).child("money")
+                        .setValue(money.getText().toString() + " рублей");
+            }
+        });
+>>>>>>> dae26ba4f0b9f86f487326e6c20b92982c8d7417
         return view;
     }
 
