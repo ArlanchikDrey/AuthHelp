@@ -65,7 +65,7 @@ public class RegistFragment extends Fragment {
                                 mDatabase.child("Company").child(who2).child("Сотрудники")
                                         .child(user.getUid()).setValue(user.getDisplayName());
                             }else{
-                                Toast.makeText(getContext(), "Нет", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "Нет", Toast.LENGTH_SHORT).show();
                             }
                         }
 

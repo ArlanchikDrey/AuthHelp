@@ -35,7 +35,7 @@ public class MainFragment extends Fragment {
                                 .commit();
                         return true;
                 }
-                return true
+                return true;
             }
         });
 
