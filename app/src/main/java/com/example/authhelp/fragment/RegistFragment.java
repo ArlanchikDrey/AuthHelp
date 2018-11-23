@@ -48,9 +48,30 @@ public class RegistFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String selected = spinner.getSelectedItem().toString(); //кем является
-                String who=editText.getText().toString();// название фирмы
-                String comment_key = mDatabase.child("Company").push().getKey();
-                
+
+                if(selected.equals("Владелец")){
+                    String who=editText.getText().toString();// название фирмы
+                    mDatabase.child("Company").child(who).child("Владелец").setValue(user.getUid());
+                }else if(selected.equals("Сотрудник")){
+                    final String who2=editText.getText().toString();// название фирмы
+                    mDatabase.child("Company").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                         if(dataSnapshot.hasChild(who2)){
+                             mDatabase.child("Company").child(who2).child("Сотрудники")
+                                     .child(user.getUid()).setValue(user.getDisplayName());
+                         }else{
+                             Toast.makeText(getContext(), "Нет", Toast.LENGTH_SHORT).show();
+                         }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+
 
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.container, MainFragment.newInstance())
