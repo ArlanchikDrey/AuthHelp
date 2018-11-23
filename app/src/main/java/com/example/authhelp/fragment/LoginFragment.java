@@ -30,7 +30,7 @@ public class LoginFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragmen_login,container,false);
-        btn_sing=view.findViewById(R.id.btn_sign);
+    //    btn_sing=view.findViewById(R.id.btn_sign);
 
         mAuth=FirebaseAuth.getInstance();
         btn_sing.setOnClickListener(new View.OnClickListener() {

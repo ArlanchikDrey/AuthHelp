@@ -6,6 +6,15 @@
         Приветствуем вас\n
         в\n
         MemTime!
-
     </string>
+
+    <!-- Стринги для фрагмента регистрации -->
+    <string name="who_you">Кем вы являетесь?</string>
+    <string-array name="whoList">
+        <item>Выбери</item>
+        <item>Владелец</item>
+        <item>Сотрудник</item>
+    </string-array>
+    <string name="name_company">Введите название фирмы</string>
+    <string name="next">Продолжить</string>
 </resources>

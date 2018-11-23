@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="112dp"
+        android:textSize="20sp"
+        android:text="@string/who_you" />
+
+    <Spinner
+        android:id="@+id/spinner_who"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="256dp"
+        android:entries="@array/whoList" />
+
+    <EditText
+        android:id="@+id/name_company_regist"
+        android:layout_width="230dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:layout_below="@id/spinner_who"
+        android:textSize="18sp"
+        android:layout_centerInParent="true"
+        android:hint="@string/name_company"
+         />
+
+      <Button
+          android:id="@+id/regist_next"
+          android:layout_width="150dp"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/name_company_regist"
+          android:layout_centerInParent="true"
+          android:layout_marginTop="100dp"
+          android:text="@string/next"
+          android:background="@drawable/style_button"/>
+
+</RelativeLayout>
