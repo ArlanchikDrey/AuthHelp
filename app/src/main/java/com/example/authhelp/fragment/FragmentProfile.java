@@ -32,7 +32,7 @@ public class FragmentProfile extends Fragment {
 
     private String company_name;
 
-    private EditText money;
+    private EditText finish_price,price_once,number_material,buy_sell;
     private Button button;
     @Nullable
     @Override
@@ -41,7 +41,10 @@ public class FragmentProfile extends Fragment {
        View view=inflater.inflate(R.layout.fragment_profile,container,false);
 
        button=view.findViewById(R.id.button3);
-       money=view.findViewById(R.id.editText3);
+       finish_price=view.findViewById(R.id.finish_price);
+       price_once=view.findViewById(R.id.price_once);
+       number_material=view.findViewById(R.id.number_material);
+       buy_sell=view.findViewById(R.id.buy_sell);
 
 
        mDatabase.child("Users").child(user.getUid()).child("company")
@@ -56,6 +59,8 @@ public class FragmentProfile extends Fragment {
 
            }
        });
+
+
        button.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
@@ -68,9 +73,21 @@ public class FragmentProfile extends Fragment {
                mDatabase.child("Company").child(company_name).child("Post").child(key).child("day")
                        .setValue(date_time);
 
+               mDatabase.child("Company").child(company_name).child("Post").child(key).child("buyORsell")
+                       .setValue(buy_sell.getText().toString());
+               mDatabase.child("Company").child(company_name).child("Post").child(key).child("number_material")
+                       .setValue(number_material.getText().toString());
+               mDatabase.child("Company").child(company_name).child("Post").child(key).child("price_once")
+                       .setValue(price_once.getText().toString());
 
-               mDatabase.child("Company").child(company_name).child("Post").child(key).child("money")
-                       .setValue(money.getText().toString()+" рублей");
+               String s1=number_material.getText().toString();
+               String s2=price_once.getText().toString();
+               int sum=Integer.parseInt(s1)*Integer.parseInt(s2);
+               finish_price.setText(String.valueOf(sum));
+               mDatabase.child("Company").child(company_name).child("Post").child(key).child("finish_price")
+                       .setValue(String.valueOf(sum));
+
+
            }
        });
         return view;

@@ -21,15 +21,15 @@ public class MainActivity extends AppCompatActivity {
 
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-//        if(currentUser==null){
-//            getSupportFragmentManager().beginTransaction().replace(R.id.container, LoginFragment.newInstance())
-//                    .commit();
-//        }else{
-//            getSupportFragmentManager().beginTransaction().replace(R.id.container, MainFragment.newInstance())
-//                    .commit();
-//        }
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, MainFragment.newInstance())
+        if(currentUser==null){
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, LoginFragment.newInstance())
                     .commit();
+       }else{
+           getSupportFragmentManager().beginTransaction().replace(R.id.container, MainFragment.newInstance())
+                  .commit();
+        }
+//        getSupportFragmentManager().beginTransaction().replace(R.id.container, MainFragment.newInstance())
+//                    .commit();
         }
 
 

@@ -11,11 +11,12 @@ import com.example.authhelp.ItemsForCardView;
 import com.example.authhelp.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
-    private ArrayList<ItemsForCardView> arrayList;
+    private List<ListPost> arrayList;
 
-    public RecyclerViewAdapter(ArrayList<ItemsForCardView> arrayList) {
+    public RecyclerViewAdapter(List<ListPost> arrayList) {
         this.arrayList = arrayList;
     }
 
@@ -28,15 +29,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+        final ListPost listPost=arrayList.get(i);
         CardView cardView = viewHolder.cardView;
         TextView textView = cardView.findViewById(R.id.textView2);
         TextView textView2 = cardView.findViewById(R.id.textView3);
         TextView textView3 = cardView.findViewById(R.id.textView4);
         TextView textView4 = cardView.findViewById(R.id.textView5);
-        textView.setText(arrayList.get(i).getDay());
-        textView2.setText(arrayList.get(i).getFirstItem());
-        textView3.setText(arrayList.get(i).getSecondItem());
-        textView4.setText(arrayList.get(i).getThirdItem());
+        TextView textView5 = cardView.findViewById(R.id.textView6);
+
+        textView.setText(listPost.day);
+        textView2.setText(listPost.buyORsell);
+        textView3.setText(listPost.finish_price);
+        textView4.setText(listPost.number_material);
+        textView5.setText(listPost.price_once);
+
     }
 
     @Override
